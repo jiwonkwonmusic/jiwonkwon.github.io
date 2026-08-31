@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jiwon Kwon | Academic Website</title>
+  <title>Jiwon Kwon</title>
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,35 +20,32 @@
       --text-main: #2b2b2b;        /* 흑연색 본문 */
       --text-muted: #666666;       /* 차분한 보조 텍스트 */
       --bg: #f7f5f0;               /* 웜 아이보리/크림 배경 */
-      --card-bg: #ffffff;          /* 메인 카드 배경 */
-      --border: #e6e2d8;           /* 클래식 테두리 */
-      --nav-bg: #fcfbf9;           /* 탭 바 배경 */
+      --border: #e6e2d8;           /* 클래식 구분선 */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
       font-family: "EB Garamond", "Noto Serif KR", Garamond, "Times New Roman", serif;
-      font-size: 1.15rem;
-      line-height: 1.75;
+      font-size: 1.18rem;
+      line-height: 1.8;
       color: var(--text-main);
       background-color: var(--bg);
-      padding: 40px 20px;
+      margin: 0;
+      padding: 0;
     }
 
-    .container {
-      max-width: 820px;
+    /* 레이아웃 공통 너비 제한 (가독성을 위한 중앙 정렬) */
+    .content-wrapper {
+      max-width: 960px;
       margin: 0 auto;
-      background: var(--card-bg);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
-      overflow: hidden;
+      padding: 0 28px;
     }
 
-    /* Header Profile */
+    /* Top Header */
     header {
-      padding: 40px 40px 24px;
+      width: 100%;
+      padding: 48px 0 28px;
       border-bottom: 1px solid var(--border);
     }
     
@@ -56,11 +53,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
     }
     
     .name-title h1 { 
-      font-size: 2.3rem; 
+      font-size: 2.5rem; 
       font-weight: 700; 
       color: #1a1a1a; 
       letter-spacing: -0.01em;
@@ -68,27 +65,27 @@
     }
     
     .name-title p { 
-      font-size: 1.15rem; 
+      font-size: 1.2rem; 
       color: var(--text-muted); 
       font-style: italic;
     }
 
     .profile-img {
-      width: 110px;
-      height: 110px;
+      width: 115px;
+      height: 115px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       flex-shrink: 0;
     }
     
     .header-links {
-      margin-top: 18px;
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
     
     .header-links a {
@@ -103,12 +100,12 @@
     
     .header-links a:hover { color: var(--primary); }
 
-    /* CV Button in Header */
+    /* CV Button */
     .cv-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
+      padding: 4px 14px;
       background: var(--primary);
       color: #ffffff !important;
       text-decoration: none;
@@ -119,22 +116,28 @@
     }
     .cv-btn:hover { background: var(--primary-hover); }
 
-    /* Top Nav Tabs (Centered & Balanced) */
+    /* Navigation Bar (Full Width & Centered Tabs) */
     nav {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background-color: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
       display: flex;
       justify-content: center;
-      border-bottom: 1px solid var(--border);
-      background: var(--nav-bg);
-      padding: 0 20px;
       overflow-x: auto;
     }
     
     .tab-btn {
       font-family: inherit;
-      padding: 14px 22px;
+      padding: 16px 24px;
       border: none;
       background: none;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
@@ -152,11 +155,12 @@
       background: transparent;
     }
 
-    /* Tab Content Area */
+    /* Main Content Area */
     main { 
-      padding: 36px 40px; 
-      min-height: 320px;
+      padding: 44px 0 80px; 
+      min-height: 400px;
     }
+
     .tab-pane { display: none; }
     .tab-pane.active { display: block; animation: fadeIn 0.25s ease-in-out; }
 
@@ -166,35 +170,36 @@
     }
 
     h2 { 
-      font-size: 1.5rem; 
+      font-size: 1.6rem; 
       font-weight: 600; 
-      margin-bottom: 16px; 
+      margin-bottom: 20px; 
       color: #1a1a1a; 
       border-bottom: 1px solid var(--border);
-      padding-bottom: 6px;
+      padding-bottom: 8px;
     }
 
     @media (max-width: 640px) {
-      body { padding: 12px; font-size: 1.05rem; }
-      header, main { padding: 24px 20px; }
-      nav { justify-content: flex-start; padding: 0 10px; }
+      body { font-size: 1.08rem; }
+      .content-wrapper { padding: 0 18px; }
+      header { padding: 32px 0 20px; }
       .profile-header { flex-direction: column-reverse; align-items: flex-start; }
       .profile-img { width: 90px; height: 90px; }
-      .tab-btn { padding: 10px 14px; font-size: 1rem; }
+      .nav-inner { justify-content: flex-start; }
+      .tab-btn { padding: 12px 16px; font-size: 1.05rem; }
+      main { padding: 32px 0 60px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- Header -->
-    <header>
+  <!-- Header Section -->
+  <header>
+    <div class="content-wrapper">
       <div class="profile-header">
         <div class="name-title">
-          <h1>Jiwon Kwon</h1>
-          <p>Researcher / Graduate Student</p>
+          <h1>Jiwon Kwon 권지원</h1>
         </div>
-        <!-- 프로필 사진 (같은 경로에 profile.jpg 업로드 시 표시) -->
+        <!-- 프로필 사진: 같은 폴더에 profile.jpg 업로드 시 표시 -->
         <img src="profile.jpg" alt="Jiwon Kwon" class="profile-img" onerror="this.style.display='none'">
       </div>
       
@@ -203,24 +208,28 @@
         <a href="https://scholar.google.com" target="_blank"><i class="fa-brands fa-google-scholar"></i> Google Scholar</a>
         <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
         <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-        <!-- CV 다운로드 링크 (같은 경로에 cv.pdf 업로드 시 작동) -->
+        <!-- CV 다운로드 링크 (같은 폴더에 cv.pdf 업로드 시 작동) -->
         <a href="cv.pdf" class="cv-btn" target="_blank" download>
           <i class="fa-solid fa-file-pdf"></i> CV (PDF)
         </a>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- Top Navigation Bar -->
-    <nav>
+  <!-- Top Navigation Bar -->
+  <nav>
+    <div class="content-wrapper nav-inner">
       <button class="tab-btn active" onclick="switchTab(event, 'about')">About</button>
       <button class="tab-btn" onclick="switchTab(event, 'research')">Research</button>
       <button class="tab-btn" onclick="switchTab(event, 'cv')">CV</button>
       <button class="tab-btn" onclick="switchTab(event, 'music')">Music</button>
       <button class="tab-btn" onclick="switchTab(event, 'other')">Other</button>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Main Content Tabs (Content Cleaned) -->
-    <main>
+  <!-- Main Content Tabs -->
+  <main>
+    <div class="content-wrapper">
       <!-- About Tab -->
       <section id="about" class="tab-pane active">
         <h2>About</h2>
@@ -250,8 +259,8 @@
         <h2>Other</h2>
         <!-- 여기에 취미, 블로그, 기타 관심사를 작성하세요 -->
       </section>
-    </main>
-  </div>
+    </div>
+  </main>
 
   <!-- JavaScript for Tab Switching -->
   <script>
