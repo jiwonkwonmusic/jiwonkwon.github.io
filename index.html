@@ -23,7 +23,6 @@
       --card-bg: #ffffff;          /* 메인 카드 배경 */
       --border: #e6e2d8;           /* 클래식 테두리 */
       --nav-bg: #fcfbf9;           /* 탭 바 배경 */
-      --item-bg: #faf9f6;          /* 리스트 카드 배경 */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -84,14 +83,15 @@
       flex-shrink: 0;
     }
     
-    .social-links {
+    .header-links {
       margin-top: 18px;
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 14px;
     }
     
-    .social-links a {
+    .header-links a {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 1.05rem;
@@ -101,14 +101,31 @@
       transition: color 0.2s;
     }
     
-    .social-links a:hover { color: var(--primary); }
+    .header-links a:hover { color: var(--primary); }
 
-    /* Nav Tabs */
+    /* CV Button in Header */
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--primary);
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .cv-btn:hover { background: var(--primary-hover); }
+
+    /* Top Nav Tabs (Centered & Balanced) */
     nav {
       display: flex;
+      justify-content: center;
       border-bottom: 1px solid var(--border);
       background: var(--nav-bg);
-      padding: 0 40px;
+      padding: 0 20px;
       overflow-x: auto;
     }
     
@@ -135,8 +152,11 @@
       background: transparent;
     }
 
-    /* Tab Content */
-    main { padding: 36px 40px; }
+    /* Tab Content Area */
+    main { 
+      padding: 36px 40px; 
+      min-height: 320px;
+    }
     .tab-pane { display: none; }
     .tab-pane.active { display: block; animation: fadeIn 0.25s ease-in-out; }
 
@@ -153,76 +173,11 @@
       border-bottom: 1px solid var(--border);
       padding-bottom: 6px;
     }
-    
-    h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin: 20px 0 10px;
-    }
-
-    p { margin-bottom: 16px; }
-
-    /* Lists & Cards */
-    .item-card {
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin-bottom: 16px;
-      background: var(--item-bg);
-    }
-    
-    .item-title { 
-      font-size: 1.15rem; 
-      font-weight: 600; 
-      color: #1a1a1a; 
-      margin-bottom: 4px;
-    }
-    
-    .item-meta { 
-      font-size: 1rem; 
-      color: var(--text-muted); 
-      margin-bottom: 6px; 
-    }
-    
-    .item-desc { font-size: 1.05rem; }
-    
-    .badge {
-      display: inline-block;
-      padding: 1px 7px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 3px;
-      background: #f5ebeb;
-      color: var(--primary);
-      border: 1px solid #ebd3d3;
-      margin-right: 6px;
-    }
-
-    .cv-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      background: var(--primary);
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 24px;
-      transition: background 0.2s;
-    }
-    
-    .cv-btn:hover { background: var(--primary-hover); }
-
-    ul { padding-left: 24px; margin-bottom: 16px; }
-    li { margin-bottom: 6px; }
 
     @media (max-width: 640px) {
       body { padding: 12px; font-size: 1.05rem; }
       header, main { padding: 24px 20px; }
-      nav { padding: 0 10px; }
+      nav { justify-content: flex-start; padding: 0 10px; }
       .profile-header { flex-direction: column-reverse; align-items: flex-start; }
       .profile-img { width: 90px; height: 90px; }
       .tab-btn { padding: 10px 14px; font-size: 1rem; }
@@ -239,15 +194,19 @@
           <h1>Jiwon Kwon</h1>
           <p>Researcher / Graduate Student</p>
         </div>
-        <!-- 프로필 사진: 저장소에 profile.jpg 파일을 업로드해두시면 연결됩니다 -->
+        <!-- 프로필 사진 (같은 경로에 profile.jpg 업로드 시 표시) -->
         <img src="profile.jpg" alt="Jiwon Kwon" class="profile-img" onerror="this.style.display='none'">
       </div>
       
-      <div class="social-links">
+      <div class="header-links">
         <a href="mailto:your.email@university.edu"><i class="fa-solid fa-envelope"></i> Email</a>
         <a href="https://scholar.google.com" target="_blank"><i class="fa-brands fa-google-scholar"></i> Google Scholar</a>
         <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
         <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <!-- CV 다운로드 링크 (같은 경로에 cv.pdf 업로드 시 작동) -->
+        <a href="cv.pdf" class="cv-btn" target="_blank" download>
+          <i class="fa-solid fa-file-pdf"></i> CV (PDF)
+        </a>
       </div>
     </header>
 
@@ -260,79 +219,36 @@
       <button class="tab-btn" onclick="switchTab(event, 'other')">Other</button>
     </nav>
 
-    <!-- Main Content Tabs -->
+    <!-- Main Content Tabs (Content Cleaned) -->
     <main>
       <!-- About Tab -->
       <section id="about" class="tab-pane active">
-        <h2>About Me</h2>
-        <p>안녕하세요! 소속 연구실 및 학교, 주 연구 분야에 대한 소개를 여기에 작성합니다.</p>
-        <p>현재 관심 있는 학문적 주제나 진행 중인 프로젝트에 대해 설명할 수 있습니다.</p>
-        
-        <h2 style="margin-top: 32px;">News & Updates</h2>
-        <ul>
-          <li><strong>Aug 2026:</strong> 새 학술대회 논문 게재 확정</li>
-          <li><strong>May 2026:</strong> 학회 구두 발표(Oral Presentation) 완료</li>
-        </ul>
+        <h2>About</h2>
+        <!-- 여기에 About 내용을 작성하세요 -->
       </section>
 
       <!-- Research Tab -->
       <section id="research" class="tab-pane">
-        <h2>Publications</h2>
-        
-        <div class="item-card">
-          <span class="badge">Conference</span>
-          <div class="item-title">논문 제목 예시 1: 연구 주제에 관한 새로운 접근법</div>
-          <div class="item-meta"><strong>Jiwon Kwon</strong>, Co-Author 1, Co-Author 2 · <em>Conference Name, 2026</em></div>
-          <div class="item-desc">논문에 대한 핵심 요약 및 연구 기여점.</div>
-          <div style="margin-top: 8px;">
-            <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.95rem; margin-right: 12px;">[PDF]</a>
-            <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.95rem;">[Code]</a>
-          </div>
-        </div>
-
-        <div class="item-card">
-          <span class="badge">Journal</span>
-          <div class="item-title">논문 제목 예시 2: 데이터 기반 모델링 연구</div>
-          <div class="item-meta">Co-Author 1, <strong>Jiwon Kwon</strong> · <em>Journal Name, 2025</em></div>
-        </div>
+        <h2>Research</h2>
+        <!-- 여기에 Research / 논문 목록을 작성하세요 -->
       </section>
 
       <!-- CV Tab -->
       <section id="cv" class="tab-pane">
         <h2>Curriculum Vitae</h2>
-        <!-- 저장소에 cv.pdf 파일을 업로드해두시면 연결됩니다 -->
-        <a href="cv.pdf" class="cv-btn" target="_blank" download>
-          <i class="fa-solid fa-download"></i> Download Full CV (PDF)
-        </a>
-        
-        <h3>Education</h3>
-        <ul>
-          <li><strong>대학교 / 대학원 명</strong> — 박사/석사 과정 (2024 – 현재)</li>
-          <li><strong>대학교 명</strong> — 학사 졸업 (2020 – 2024)</li>
-        </ul>
-
-        <h3>Experience</h3>
-        <ul>
-          <li><strong>연구 인턴</strong> @ 기관명 (2025)</li>
-        </ul>
+        <!-- 여기에 학력, 경력 등 상세 이력을 작성하세요 -->
       </section>
 
       <!-- Music Tab -->
       <section id="music" class="tab-pane">
-        <h2>Music & Performance</h2>
-        <p>연구 외에 진행하는 음악 활동, 악기 연주, 작곡 포트폴리오 또는 좋아하는 곡들을 소개하는 공간입니다.</p>
-        
-        <div class="item-card">
-          <div class="item-title">활동 / 프로젝트 명 (예: 피아노/기타 연주, 밴드)</div>
-          <div class="item-meta">악기 / 포지션 · 2024 – 현재</div>
-          <div class="item-desc">간단한 활동 설명이나 음원/영상 링크를 추가할 수 있습니다.</div>
-        </div>
+        <h2>Music</h2>
+        <!-- 여기에 음악 활동 및 포트폴리오를 작성하세요 -->
       </section>
 
       <!-- Other Tab -->
       <section id="other" class="tab-pane">
-        <h2>Other Interests & Blog</h2>
-        <p>취미, 사진, 에세이 또는 개인적인 관심사를 자유롭게 기록하는 탭입니다.</p>
+        <h2>Other</h2>
+        <!-- 여기에 취미, 블로그, 기타 관심사를 작성하세요 -->
       </section>
     </main>
   </div>
