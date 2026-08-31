@@ -285,6 +285,19 @@
       .tab-btn { padding: 12px 14px; font-size: 0.95rem; }
       main { padding: 32px 0 64px; }
     }
+    .bio-lead {
+  font-size: 1.12rem;
+  line-height: 1.85;           /* 줄과 줄 사이 간격을 시원하게 확장 */
+  letter-spacing: -0.005em;    /* 영문 특유의 자간 뭉침 방지 */
+  word-spacing: 0.04em;        /* 단어 사이 공백을 살짝 넓혀 가독성 향상 */
+  color: var(--text-main);
+  margin-bottom: 24px;
+}
+
+.bio-lead strong {
+  font-weight: 600;
+  color: #0f172a;
+}
   </style>
 </head>
 <body>
@@ -329,9 +342,16 @@
     <div class="content-wrapper">
       <!-- About Tab -->
       <section id="about" class="tab-pane active">
-        <!-- 여기에 About 소개글을 작성하세요 -->
-        I'm a PhD candidate in Ethnomusicology at the University of Pennsylvania, currently in the fieldwork stage of my dissertation. Before starting my PhD, I worked for years as a jazz and pop pianist, composer, arranger, and bandleader — time spent on the other side of the studio glass that still shapes the questions I bring to my research today.
-      </section>
+  <h2>About</h2>
+  
+  <p class="bio-lead">
+    I'm a PhD candidate in <strong>Ethnomusicology</strong> at the <strong>University of Pennsylvania</strong>, currently in the fieldwork stage of my dissertation.
+  </p>
+  
+  <p class="bio-lead" style="color: #334155;">
+    Before starting my PhD, I worked for years as a jazz and pop pianist, composer, arranger, and bandleader — time spent on the other side of the studio glass that still shapes the questions I bring to my research today.
+  </p>
+</section>
 
       <!-- Research Tab -->
       <section id="research" class="tab-pane">
