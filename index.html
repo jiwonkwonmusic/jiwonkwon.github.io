@@ -15,20 +15,22 @@
 
   <style>
     :root {
-      --primary: #1e293b;          /* 딥 슬레이트 / 모던 챠콜 */
-      --primary-accent: #8b1e1e;   /* 포인트 버건디 */
-      --text-main: #0f172a;        /* 또렷한 흑연색 */
-      --text-muted: #64748b;       /* 세련된 쿨그레이 */
-      --bg: #fafaf9;               /* 은은하고 밝은 웜 미니멀 배경 */
-      --border: #e2e8f0;           /* 얇고 깔끔한 라인 */
+      --primary: #8b1e1e;          /* 딥 버건디 */
+      --primary-hover: #6b1414;    /* 짙은 버건디 */
+      --primary-light: #fbf0f0;    /* 아주 연한 버건디 틴트 */
+      --text-main: #1f242e;        /* 부드럽고 또렷한 흑연색 */
+      --text-muted: #64748b;       /* 차분한 보조 텍스트 */
+      --bg: #f8f7f4;               /* 따뜻하고 은은한 웜 크림/아이보리 */
+      --card-bg: #ffffff;          /* 깔끔한 화이트 카드 */
+      --border: #e8e5de;           /* 부드러운 테두리 */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
-      font-family: "Plus Jakarta Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: "Plus Jakarta Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 1.05rem;
-      line-height: 1.7;
+      line-height: 1.75;
       letter-spacing: -0.015em;
       color: var(--text-main);
       background-color: var(--bg);
@@ -36,7 +38,7 @@
       padding: 0;
     }
 
-    /* 공통 레이아웃 너비 (가독성을 위한 중앙 정렬) */
+    /* 레이아웃 공통 너비 */
     .content-wrapper {
       max-width: 900px;
       margin: 0 auto;
@@ -60,7 +62,7 @@
     .name-title h1 { 
       font-size: 2.2rem; 
       font-weight: 700; 
-      color: var(--text-main); 
+      color: #111827; 
       letter-spacing: -0.03em;
       margin-bottom: 4px; 
     }
@@ -72,12 +74,12 @@
     }
 
     .profile-img {
-      width: 100px;
-      height: 100px;
+      width: 105px;
+      height: 105px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(139, 30, 30, 0.08);
       flex-shrink: 0;
     }
     
@@ -100,25 +102,28 @@
       transition: color 0.15s ease;
     }
     
-    .header-links a:hover { color: var(--text-main); }
+    .header-links a:hover { color: var(--primary); }
 
-    /* CV Button */
+    /* CV Button (Burgundy) */
     .cv-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
-      background: var(--text-main);
+      padding: 5px 14px;
+      background: var(--primary);
       color: #ffffff !important;
       text-decoration: none;
       border-radius: 6px;
       font-size: 0.88rem;
       font-weight: 500;
-      transition: opacity 0.15s ease;
+      transition: background 0.15s ease, transform 0.15s ease;
     }
-    .cv-btn:hover { opacity: 0.85; }
+    .cv-btn:hover { 
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
 
-    /* Navigation Bar (Full Width & Sticky) */
+    /* Navigation Bar */
     nav {
       width: 100%;
       border-bottom: 1px solid var(--border);
@@ -132,7 +137,7 @@
     .nav-inner {
       display: flex;
       justify-content: flex-start;
-      gap: 8px;
+      gap: 10px;
       overflow-x: auto;
     }
     
@@ -151,17 +156,17 @@
       transition: all 0.15s ease;
     }
     
-    .tab-btn:hover { color: var(--text-main); }
+    .tab-btn:hover { color: var(--primary); }
     
     .tab-btn.active {
-      color: var(--text-main);
-      border-bottom: 2px solid var(--text-main);
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
       background: transparent;
     }
 
     /* Main Content Area */
     main { 
-      padding: 48px 0 96px; 
+      padding: 44px 0 96px; 
       min-height: 400px;
     }
 
@@ -174,13 +179,101 @@
     }
 
     h2 { 
-      font-size: 1.4rem; 
+      font-size: 1.45rem; 
       font-weight: 700; 
       letter-spacing: -0.02em;
       margin-bottom: 20px; 
-      color: var(--text-main); 
+      color: #111827; 
       border-bottom: 1px solid var(--border);
       padding-bottom: 8px;
+    }
+
+    /* Music Section Styles */
+    .music-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .music-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .music-card:hover {
+      border-color: #d6cfc2;
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.05);
+    }
+
+    .music-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .music-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 9px;
+      border-radius: 4px;
+      border: 1px solid #fae1e1;
+    }
+    .music-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .music-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+    .music-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    /* Responsive YouTube Embed (16:9) */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      margin-top: 12px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Embed Container for Spotify / SoundCloud */
+    .embed-container {
+      margin-top: 14px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .native-audio {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 30px;
     }
 
     @media (max-width: 640px) {
@@ -188,7 +281,7 @@
       .content-wrapper { padding: 0 16px; }
       header { padding: 36px 0 24px; }
       .profile-header { flex-direction: column-reverse; align-items: flex-start; }
-      .profile-img { width: 80px; height: 80px; }
+      .profile-img { width: 85px; height: 85px; }
       .tab-btn { padding: 12px 14px; font-size: 0.95rem; }
       main { padding: 32px 0 64px; }
     }
@@ -201,8 +294,7 @@
     <div class="content-wrapper">
       <div class="profile-header">
         <div class="name-title">
-          <h1>Jiwon Kwon 권지원</h1>
-          <p>Researcher / Graduate Student</p>
+          <h1>Jiwon Kwon  권지원</h1>
         </div>
         <!-- 프로필 사진 (같은 경로에 profile.jpg 업로드 시 표시) -->
         <img src="profile.jpg" alt="Jiwon Kwon" class="profile-img" onerror="this.style.display='none'">
@@ -238,25 +330,110 @@
       <!-- About Tab -->
       <section id="about" class="tab-pane active">
         <h2>About</h2>
-        <!-- 여기에 About 내용을 작성하세요 -->
+        <!-- 여기에 About 소개글을 작성하세요 -->
       </section>
 
       <!-- Research Tab -->
       <section id="research" class="tab-pane">
         <h2>Research</h2>
-        <!-- 여기에 Research / 논문 목록을 작성하세요 -->
+        <!-- 여기에 논문 및 연구 프로젝트 목록을 작성하세요 -->
       </section>
 
       <!-- Music Tab -->
       <section id="music" class="tab-pane">
-        <h2>Music</h2>
-        <!-- 여기에 음악 활동 및 포트폴리오를 작성하세요 -->
+        <h2>Music & Recordings</h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">
+          연구 외에 진행하는 악기 연주, 작곡 작업 및 좋아하는 플레이리스트 아카이브입니다.
+        </p>
+
+        <div class="music-grid">
+          
+          <!-- Card 1: YouTube 연주 영상 임베드 -->
+          <div class="music-card">
+            <div class="music-meta">
+              <span class="music-tag">Performance</span>
+              <span class="music-date">2026</span>
+            </div>
+            <div class="music-title">Piano / Instrumental Performance</div>
+            <div class="music-desc">정기 연주회 실황 또는 개인 연습 영상 기록입니다.</div>
+            
+            <div class="video-container">
+              <!-- 유튜브 영상 주소 교체 -->
+              <iframe 
+                src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+                title="YouTube performance" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Card 2: Spotify 플레이리스트 임베드 -->
+          <div class="music-card">
+            <div class="music-meta">
+              <span class="music-tag">Curated Playlist</span>
+              <span class="music-date">Spotify</span>
+            </div>
+            <div class="music-title">Late Night Research Focus</div>
+            <div class="music-desc">논문을 읽거나 집중해서 작업할 때 즐겨 듣는 음악 모음입니다.</div>
+            
+            <div class="embed-container">
+              <iframe 
+                style="border-radius:12px" 
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4sWSpwq3LiO?utm_source=generator&theme=0" 
+                width="100%" 
+                height="152" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Card 3: SoundCloud 음원 임베드 -->
+          <div class="music-card">
+            <div class="music-meta">
+              <span class="music-tag">Composition</span>
+              <span class="music-date">SoundCloud</span>
+            </div>
+            <div class="music-title">Original Demo / Recording</div>
+            <div class="music-desc">직접 홈레코딩한 데모 음원이나 자작곡 트랙입니다.</div>
+            
+            <div class="embed-container">
+              <iframe 
+                width="100%" 
+                height="130" 
+                scrolling="no" 
+                frameborder="no" 
+                allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&color=%238b1e1e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Card 4: 직접 업로드한 로컬 MP3 파일 재생기 -->
+          <div class="music-card">
+            <div class="music-meta">
+              <span class="music-tag">Audio File</span>
+              <span class="music-date">Local MP3</span>
+            </div>
+            <div class="music-title">Acoustic Recording</div>
+            <div class="music-desc">저장소에 직접 올린 <code>track1.mp3</code> 파일을 기본 플레이어로 바로 재생합니다.</div>
+            
+            <audio controls class="native-audio">
+              <source src="track1.mp3" type="audio/mpeg">
+              브라우저가 오디오 태그를 지원하지 않습니다.
+            </audio>
+          </div>
+
+        </div>
       </section>
 
       <!-- CV Tab -->
       <section id="cv" class="tab-pane">
         <h2>Curriculum Vitae</h2>
-        <!-- 여기에 학력, 경력 등 상세 이력을 작성하세요 -->
+        <!-- 여기에 학력, 경력, 수상 등 상세 이력을 작성하세요 -->
       </section>
 
       <!-- Other Tab -->
